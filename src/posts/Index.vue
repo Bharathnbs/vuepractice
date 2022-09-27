@@ -1,5 +1,5 @@
 <template>
-        <Multi />
+        <Multi name="bharath" title="developer"/>
     <table>
         <thead>
             <tr>
@@ -36,7 +36,6 @@
         name: 'PostIndex',
         mixins : [countMixin],
         components : {Multi},
-        props : [title],
 
         data() {
             return {
