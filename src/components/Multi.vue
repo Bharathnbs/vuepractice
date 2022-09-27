@@ -7,13 +7,5 @@
     export default{
         name:'Multi',
         props: ['title', 'name'],
-
-        data(){
-            return{
-                count : 0,
-            }
-        },
-
-
     }
 </script>
