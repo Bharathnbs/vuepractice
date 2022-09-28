@@ -1,5 +1,6 @@
 <template>
         <Multi name="bharath" title="developer"/>
+        <router-link :to="{name: 'Create'}">Create</router-link>
     <table>
         <thead>
             <tr>
@@ -19,6 +20,7 @@
                 <td><button @click="deletePost(post.id)">delete</button></td>
                 <!-- <td><router-link :to="'/show/' + post.id">show</router-link></td> -->
                 <td><router-link :to="{name: 'Show', params: {id: post.id}}">show</router-link></td>
+                <td><router-link :to="{name: 'Edit', params: {id: post.id}}">edit</router-link></td>
                 <!-- <td><a href="#/show/{{ post.id }}">show</a></td> -->
             </tr>
         </tbody>
@@ -57,12 +59,17 @@
             },
 
             deletePost(id) {
-                var check =confirm('are you sure');
-                if(check == true){
+                if(confirm('are you sure')) {
                     this.posts = this.posts.filter(function(post){
                         if (post.id == id) return false;
                         else return true;
                     });
+
+                    fetch('https://jsonplaceholder.typicode.com/posts/' + id ,{ method : 'DELETE'})
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                        });
                 }
             },
 
